@@ -1,0 +1,22 @@
+{
+  "name": "@voiden/plugin-md-preview",
+  "version": "1.0.1",
+  "type": "module",
+  "private": false,
+  "description": "Live preview and rendering for Markdown files with full GitHub Flavored Markdown (GFM) support including tables, syntax highlighting, task lists, and strikethrough formatting",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "node build.mjs",
+    "release": "node build.mjs && node generate-manifest.mjs"
+  },
+  "peerDependencies": {
+    "@voiden/sdk": "^1.0.10-beta.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@voiden/sdk": "1.0.10-beta.1",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  }
+}
