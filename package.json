@@ -1,6 +1,6 @@
 {
   "name": "@voiden/plugin-md-preview",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "type": "module",
   "private": false,
   "description": "Live preview and rendering for Markdown files with full GitHub Flavored Markdown (GFM) support including tables, syntax highlighting, task lists, and strikethrough formatting",
