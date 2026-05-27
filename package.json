@@ -1,6 +1,6 @@
 {
   "name": "@voiden/plugin-md-preview",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "type": "module",
   "private": false,
   "description": "Live preview and rendering for Markdown files with full GitHub Flavored Markdown (GFM) support including tables, syntax highlighting, task lists, and strikethrough formatting",
@@ -13,6 +13,14 @@
     "@voiden/sdk": "1.0.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "prosemirror-markdown": "^1.13.1",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@voiden/sdk": "1.0.10",
