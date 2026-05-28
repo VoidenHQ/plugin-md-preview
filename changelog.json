@@ -1,0 +1,27 @@
+[
+  {
+    "version": "v1.0.3",
+    "date": "27/05/2026",
+    "title": "Stability Update",
+    "changes": {
+      "Fixed": [
+        "Removed catch-all shim block",
+        "Preview no longer flickers when switching between documents"
+      ]
+    }
+  },
+  {
+    "version": "v1.0.0",
+    "date": "01/04/2026",
+    "title": "Initial Release",
+    "description": "Live markdown preview panel for Voiden documents.",
+    "changes": {
+      "Added": [
+        "Live markdown rendering in a split panel",
+        "GitHub Flavored Markdown support",
+        "Syntax highlighting for code blocks",
+        "Table and checkbox rendering"
+      ]
+    }
+  }
+]
