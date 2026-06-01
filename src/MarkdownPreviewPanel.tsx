@@ -18,25 +18,27 @@ const Pre = ({ children, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
 );
 
 const Code = ({
-  inline,
   className,
   children,
   ...props
-}: React.HTMLAttributes<HTMLElement> & { inline?: boolean }) => (
-  <code
-    {...props}
-    className={className}
-    style={{
-      display: inline ? undefined : 'block',
-      maxWidth: '100%',
-      whiteSpace: inline ? undefined : 'pre-wrap',
-      wordBreak: 'break-word',
-      ...(props.style || {}),
-    }}
-  >
-    {children}
-  </code>
-);
+}: React.HTMLAttributes<HTMLElement>) => {
+  const isInline = !className;
+  return (
+    <code
+      {...props}
+      className={className}
+      style={{
+        display: isInline ? undefined : 'block',
+        maxWidth: '100%',
+        whiteSpace: isInline ? undefined : 'pre-wrap',
+        wordBreak: 'break-word',
+        ...(props.style || {}),
+      }}
+    >
+      {children}
+    </code>
+  );
+};
 
 const Paragraph = ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p
@@ -151,7 +153,7 @@ export const MarkdownPreviewPanel = () => {
               a: ({ href, children }) => <CustomLink href={href}>{children}</CustomLink>,
               pre: ({ children, ...props }) => <Pre {...props}>{children}</Pre>,
               code: ({ className, children, ...props }: any) => (
-                <Code inline={!className} className={className} {...props}>{children}</Code>
+                <Code className={className} {...props}>{children}</Code>
               ),
               p: ({ children, ...props }) => <Paragraph {...props}>{children}</Paragraph>,
               blockquote: ({ children, ...props }) => <Blockquote {...props}>{children}</Blockquote>,
