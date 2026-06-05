@@ -25,4 +25,5 @@ jobs:
         with:
           files: |
             dist/md-preview.js
+            dist/changelog.json
             manifest.json
