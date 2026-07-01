@@ -1,9 +1,12 @@
 [
   {
     "version": "v1.0.3",
-    "date": "27/05/2026",
-    "title": "Stability Update",
+    "date": "01/07/2026",
+    "title": "Side-by-Side Preview & Stability",
     "changes": {
+      "Added": [
+        "Split view mode — the preview button now toggles a live preview panel alongside the markdown source instead of opening a separate read-only tab; pressing the button again returns to editor-only mode"
+      ],
       "Fixed": [
         "Removed catch-all shim block",
         "Preview no longer flickers when switching between documents"

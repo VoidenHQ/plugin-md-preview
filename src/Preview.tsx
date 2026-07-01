@@ -1,6 +1,25 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from 'remark-gfm';
 
+// Stamps every rendered element with the source markdown line it came from
+// (read off the remark/rehype position info that's preserved through the
+// mdast -> hast transform). Lets the split view scroll-sync by matching
+// actual content rather than raw scroll percentage, which drifts whenever
+// rendered block heights don't match source line heights (headings, code
+// blocks, images, etc).
+function rehypeLineNumbers() {
+  return (tree: any) => {
+    const visit = (node: any) => {
+      if (node.type === 'element' && node.position?.start?.line) {
+        node.properties = node.properties || {};
+        node.properties['data-line'] = node.position.start.line;
+      }
+      if (Array.isArray(node.children)) node.children.forEach(visit);
+    };
+    visit(tree);
+  };
+}
+
 const Pre = ({ children, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
   <pre
     {...props}
@@ -129,6 +148,7 @@ export const Preview = ({ tab, className = "" }: { tab: any; className?: string 
         <div className={`p-2 w-full ${Preview.proseClasses || ""}`} style={{ backgroundColor: 'var(--editor-bg)' }}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeLineNumbers]}
             key={tab.tabId}
             components={{
               // Override the default anchor tag rendering
