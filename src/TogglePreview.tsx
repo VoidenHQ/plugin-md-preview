@@ -1,9 +1,9 @@
-import { BookOpen, Pencil } from "lucide-react";
+import { Pencil, Eye, Columns2 } from "lucide-react";
 import { create } from "zustand";
 
-// "split" shows the live preview alongside the raw markdown source. Pressing
-// the toggle again drops back to "edit" (raw source only, no preview).
-export type MdViewMode = "edit" | "split";
+// "edit" shows the raw markdown source only. "preview" shows the rendered
+// markdown only. "split" shows both side by side.
+export type MdViewMode = "edit" | "preview" | "split";
 
 export const useMdViewStore = create<{
   viewMode: MdViewMode;
@@ -13,19 +13,28 @@ export const useMdViewStore = create<{
   setViewMode: (viewMode) => set({ viewMode }),
 }));
 
+const MODES: { mode: MdViewMode; label: string; icon: typeof Pencil }[] = [
+  { mode: "edit", label: "Markdown", icon: Pencil },
+  { mode: "preview", label: "Preview", icon: Eye },
+  { mode: "split", label: "Both", icon: Columns2 },
+];
+
 export const TogglePreview = ({ tab }: { tab: any }) => {
   const viewMode = useMdViewStore((state) => state.viewMode);
   const setViewMode = useMdViewStore((state) => state.setViewMode);
 
-  const toggleMode = () => setViewMode(viewMode === "edit" ? "split" : "edit");
-
   return (
-    <button
-      className="p-1 hover:bg-active rounded-sm"
-      onClick={toggleMode}
-      title={viewMode === "edit" ? "Show preview" : "Hide preview"}
-    >
-      {viewMode === "edit" ? <BookOpen size={14} /> : <Pencil size={14} />}
-    </button>
+    <div className="flex items-center gap-0.5 p-0.5 rounded-sm bg-active/40">
+      {MODES.map(({ mode, label, icon: Icon }) => (
+        <button
+          key={mode}
+          className={`p-1 rounded-sm ${viewMode === mode ? "bg-active text-text" : "text-comment hover:bg-active/60"}`}
+          onClick={() => setViewMode(mode)}
+          title={label}
+        >
+          <Icon size={14} />
+        </button>
+      ))}
+    </div>
   );
 };

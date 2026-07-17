@@ -21,8 +21,11 @@ const mdPreviewPlugin = (context: PluginContext) => {
   return {
     onload: () => {
 
-      // Inject prose classes into Preview component
-      Preview.proseClasses = context.ui.getProseClasses();
+      // Inject prose classes into Preview component. Prefer the reading-mode
+      // variant (proportional font, distinct from the monospace source editor);
+      // fall back to the editor's own prose classes on older hosts that don't
+      // expose getPreviewProseClasses yet.
+      Preview.proseClasses = (context.ui as any).getPreviewProseClasses?.() ?? context.ui.getProseClasses();
 
       // Expose helpers for core to use dynamically
       context.exposeHelpers({

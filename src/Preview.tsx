@@ -145,7 +145,16 @@ export const Preview = ({ tab, className = "" }: { tab: any; className?: string 
           backgroundColor: 'var(--editor-bg)'
         }}
       >
-        <div className={`p-2 w-full ${Preview.proseClasses || ""}`} style={{ backgroundColor: 'var(--editor-bg)' }}>
+        <div
+          className={`p-2 w-full ${Preview.proseClasses || ""}`}
+          style={{
+            backgroundColor: 'var(--editor-bg)',
+            maxWidth: 'var(--prose-max-width, 860px)',
+            marginLeft: 'var(--content-align-ml, auto)',
+            marginRight: 'var(--content-align-mr, auto)',
+            boxSizing: 'border-box',
+          }}
+        >
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeLineNumbers]}

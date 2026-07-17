@@ -1,5 +1,20 @@
 [
   {
+    "version": "v1.0.4",
+    "date": "16/07/2026",
+    "title": "Dedicated Preview Mode & Readable Width",
+    "changes": {
+      "Added": [
+        "Preview-only view mode — the toggle now cycles through Markdown, Preview, and Split instead of just Edit/Split",
+        "Segmented toggle control with distinct icons and labels for each view mode"
+      ],
+      "Changed": [
+        "Preview content now renders at a constrained, readable width instead of stretching full-width",
+        "Preview now uses the host's dedicated reading-mode prose classes when available, falling back to the editor's prose classes on older hosts"
+      ]
+    }
+  },
+  {
     "version": "v1.0.3",
     "date": "01/07/2026",
     "title": "Side-by-Side Preview & Stability",
