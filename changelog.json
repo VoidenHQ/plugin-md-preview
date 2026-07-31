@@ -1,5 +1,19 @@
 [
   {
+    "version": "v1.0.5",
+    "date": "31/07/2026",
+    "title": "Large File Performance",
+    "changes": {
+      "Added": [
+        "Files larger than 512KB now show an opt-in placeholder instead of rendering automatically, keeping the app responsive on big documents"
+      ],
+      "Fixed": [
+        "Typing and scrolling no longer stall while a large file's preview is (re)parsing, by deferring the render until the browser can catch up",
+        "Preview no longer fully reparses on every unrelated app re-render"
+      ]
+    }
+  },
+  {
     "version": "v1.0.4",
     "date": "16/07/2026",
     "title": "Dedicated Preview Mode & Readable Width",
